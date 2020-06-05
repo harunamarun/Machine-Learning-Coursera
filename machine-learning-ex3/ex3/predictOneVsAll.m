@@ -30,10 +30,10 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
-
-
-
-
+% kanna is max possibility
+% p is a index which has max possibility
+% X: 5000 * 400, all_theta:10 * 400 -> 5000 * 10
+[kanna, p] = max(sigmoid(X * all_theta'), [], 2)
 
 
 % =========================================================================

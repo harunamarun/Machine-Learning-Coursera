@@ -22,7 +22,13 @@ p = zeros(size(X, 1), 1);
 %
 
 
-
+% Add bias unit
+X = [ones(m,1),X]
+X2 = sigmoid(X * Theta1')
+% Add bias unit
+X2 = [ones(m,1),X2]
+X3 = sigmoid(X2 * Theta2')
+[kanna, p] = max(X3,[],2)
 
 
 

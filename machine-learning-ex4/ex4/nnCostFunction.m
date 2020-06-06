@@ -62,22 +62,46 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% calucrated per data(1-m)
+for i = 1:m,
+
+    % foward propagation
+    % X[i, :] means getting a line of X
+    % added bias unit
+    A1 = [1, X(i, :)]'
+    Z2 = Theta1 * A1
+    A2 = sigmoid(Z2)
+    % added bias unit
+    A2 = [1; A2]
+    Z3 = Theta2 * A2
+    A3 = sigmoid(Z3)  % = h(x)
+
+    % super_y means vector expression of y
+    super_y = zeros(num_labels,1)
+    super_y(y(i),1) = 1
+
+    J += 1 / m * (-super_y' * log(A3) - (1 - super_y)' * log(1 - A3))
+
+    %calucrated delta and theta_grad
+    delta3 = A3 - super_y
+    delta2 = (Theta2'*delta3)(2:end) .* sigmoidGradient(Z2)
+    Theta1_grad += delta2*A1' / m
+    Theta2_grad += delta3*A2' / m
+
+end;
+
+% size of theta which remove 1 colum
+theta1_col = size(Theta1, 2)
+theta2_col = size(Theta2, 2)
+% added regularization
+J += lambda / (2 * m) * (sum(sum(Theta1(:,2:theta1_col).^2)) + sum(sum(Theta2(:,2:theta2_col).^2)))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+theta1_row = size(Theta1, 1)
+theta2_row = size(Theta2, 1)
+% added regularization and inserted a zeros colum because we removed first colum so it means to fit dimmention
+Theta1_grad += lambda / m * [zeros(theta1_row,1),Theta1(:,2:end)]
+Theta2_grad += lambda / m * [zeros(theta2_row,1),Theta2(:,2:end)]
 
 
 % -------------------------------------------------------------

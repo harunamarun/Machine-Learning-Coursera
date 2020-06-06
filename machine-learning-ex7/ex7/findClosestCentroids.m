@@ -22,12 +22,19 @@ idx = zeros(size(X,1), 1);
 %
 
 
-
-
-
-
+for i = 1:size(X,1),
+    mini = sum((X(i,:) - centroids(1,:)).^2)
+    for j = 1:K,
+        distance = sum((X(i,:) - centroids(j,:)).^2)
+        if mini >= distance
+            idx(i) = j
+            mini = distance
+        end
+    end
+end
 
 % =============================================================
+
 
 end
 

@@ -53,11 +53,20 @@ error_val   = zeros(m, 1);
 
 % ---------------------- Sample Solution ----------------------
 
+for i = 1:m,
+    % get learning data from 1 to ith
+    trainX = X(1:i, :)
+    trainY = y(1:i, :)
+
+    % get theta
+    theta = trainLinearReg(trainX, trainY, lambda)
+
+    % lambda is 0
+    [error_train(i), grad_train] = linearRegCostFunction(trainX, trainY, theta, 0)
+    [error_val(i), grad_val] = linearRegCostFunction(Xval, yval, theta, 0)
 
 
-
-
-
+end;
 
 % -------------------------------------------------------------
 

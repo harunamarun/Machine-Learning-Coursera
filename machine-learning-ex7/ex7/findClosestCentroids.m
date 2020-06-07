@@ -33,6 +33,17 @@ for i = 1:size(X,1),
     end
 end
 
+
+
+% more readable and easy code using matrix
+% one = ones(size(centroids));
+
+% for i = 1:size(X, 1),
+%     temp = centroids - one*diag(X(i,:));
+%     temp = temp.^2;
+%     [distance, idx(i)] = min(sum(temp'));
+% end;
+
 % =============================================================
 
 

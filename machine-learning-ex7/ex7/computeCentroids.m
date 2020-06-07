@@ -38,6 +38,7 @@ end
 
 centroids = centroids./count
 
+% more readable and easy code using matrix
 
 % for i = 1:K,
 %     match = (idx == i);

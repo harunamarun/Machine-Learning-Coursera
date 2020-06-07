@@ -30,6 +30,7 @@ for i = 1:size(Z,1),
     end
 end
 
+% more readable and easy code using matrix
 % X_rec = Z*U(:,1:K)';
 
 

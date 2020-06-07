@@ -25,7 +25,7 @@ plot(X(neg, 1), X(neg, 2), 'ko', 'MarkerFaceColor', 'y', ...
 % k means "black"
 % o and + means marker
 % LineWith means marker's line width
-% MarkerFaceColor'
+% MarkerFaceColor means inside color
 
 
 % =========================================================================
